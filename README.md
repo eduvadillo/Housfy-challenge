@@ -8,8 +8,8 @@
 
 <p> El enlace del deploy en Heroku es el siguiente: https://housfy-mars-challenge.herokuapp.com/ es la versión gratuita por lo que el servidor duerme si la web está inactiva por 30 minutos, por eso la primera vez que se abre puede ir lento.
 
-<p> Desde el centro de desarrollo de Barcelona espero que les guste el challenge! Ante cualquier duda póngase en contacto y estaré encantado de atenderle </p>
+<p> Desde el centro de desarrollo de Barcelona espero que les guste el challenge! Ante cualquier duda póngase en contacto y estaré encantado de atenderle. </p>
 
-<p> Si deseara volver a la versión antigua del software o una versión mobile, sería posible conseguirlo en un breve periodo de tiempo</p>
+<p> Si deseara volver a la versión antigua del software o una versión mobile, sería posible conseguirlo en un breve periodo de tiempo.</p>
 
 <p> Atentamente, Edu Vadillo </p>
