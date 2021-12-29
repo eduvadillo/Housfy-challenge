@@ -35,6 +35,13 @@
 }
 
 .button-start-mission {
+  width: 22vw;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.button-commands {
   width: 14vw;
   border-radius: 40px;
   font-weight: bold;

@@ -78,9 +78,16 @@ function App() {
     borderTop: `${border.top}`,
   };
 
-  /*   const handleOrder = (e) => {
-    setRover({ ...rover, order: e.target.value });
-  }; */
+  let lastLetter = rover.order[rover.order.length - 1];
+
+  let eastPosition = rover.actualPosition === "E";
+  let northPosition = rover.actualPosition === "N";
+  let westPosition = rover.actualPosition === "W";
+  let southPosition = rover.actualPosition === "S";
+
+  let roverColorPurple = roverStyle.background !== `green`;
+  let roverColorGrey = roverStyle.background === `grey`;
+  let roverColorGreen = roverStyle.background === `green`;
 
   useEffect(() => {
     if (roverStyle.background === "grey") {
@@ -93,201 +100,165 @@ function App() {
   }, [roverStyle.background]);
 
   useEffect(() => {
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "E" &&
-      roverStyle.background !== `green`
-    ) {
+    if (lastLetter === `f` && eastPosition && roverColorPurple) {
       setRover({ ...rover, positionX: rover.positionX + 10 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "W" &&
-      roverStyle.background !== `green`
-    ) {
+    if (lastLetter === `f` && westPosition && roverColorPurple) {
       setRover({ ...rover, positionX: rover.positionX - 10 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "N" &&
-      roverStyle.background !== `green`
-    ) {
+    if (lastLetter === `f` && northPosition && roverColorPurple) {
       setRover({ ...rover, positionY: rover.positionY - 10 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "S" &&
-      roverStyle.background !== `green`
-    ) {
+    if (lastLetter === `f` && southPosition && roverColorPurple) {
       setRover({ ...rover, positionY: rover.positionY + 10 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "E" &&
-      rover.positionX > 19 &&
-      roverStyle.background === `grey`
-    ) {
+    if (lastLetter === `f` && eastPosition && rover.positionX > 19 && roverColorGrey) {
       setRover({ ...rover, positionX: rover.positionX - 20 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "W" &&
-      rover.positionX < 381 &&
-      roverStyle.background === `grey`
-    ) {
+    if (lastLetter === `f` && westPosition && rover.positionX < 381 && roverColorGrey) {
       setRover({ ...rover, positionX: rover.positionX + 20 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "N" &&
-      rover.positionY < 381 &&
-      roverStyle.background === `grey`
-    ) {
+    if (lastLetter === `f` && northPosition && rover.positionY < 381 && roverColorGrey) {
       setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
-    if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "S" &&
-      rover.positionY > 21 &&
-      roverStyle.background === `grey`
-    ) {
+    if (lastLetter === `f` && southPosition && rover.positionY > 21 && roverColorGrey) {
       setRover({ ...rover, positionY: rover.positionY - 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "E" &&
+      lastLetter === `f` &&
+      eastPosition &&
       rover.positionX + 110 > positionXObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionX: rover.positionX - 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "E" &&
+      lastLetter === `f` &&
+      eastPosition &&
       rover.positionX - 100 > positionXObstacle &&
       rover.positionX < positionXObstacle + 112 &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionX: rover.positionX + 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "W" &&
+      lastLetter === `f` &&
+      westPosition &&
       rover.positionX + 107 > positionXObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionX: rover.positionX + 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "W" &&
+      lastLetter === `f` &&
+      westPosition &&
       rover.positionX + 115 > positionXObstacle &&
       rover.positionX < positionXObstacle - 95 &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionX: rover.positionX - 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "N" &&
+      lastLetter === `f` &&
+      northPosition &&
       rover.positionY + 112 > positionYObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "N" &&
+      lastLetter === `f` &&
+      northPosition &&
       rover.positionY + 122 > positionYObstacle &&
       rover.positionY + 100 < positionYObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionY: rover.positionY - 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "S" &&
+      lastLetter === `f` &&
+      southPosition &&
       rover.positionY + 90 < positionYObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionY: rover.positionY - 20 });
     }
 
     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "S" &&
+      lastLetter === `f` &&
+      southPosition &&
       rover.positionY < positionYObstacle + 110 &&
       rover.positionY - 100 > positionYObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
     /*     if (
-      rover.order[rover.order.length - 1] === `f` &&
-      rover.actualPosition === "S" &&
+      lastLetter === `f` &&
+      southPosition &&
       rover.positionY + 110 < positionYObstacle &&
-      roverStyle.background === `green`
+      roverColorGreen
     ) {
       setRover({ ...rover, positionY: rover.positionY + 20 });
     } */
 
-    if (rover.order[rover.order.length - 1] === `r` && rover.actualPosition === `N`) {
+    if (lastLetter === `r` && rover.actualPosition === `N`) {
       setRover({ ...rover, actualPosition: `E` });
       setBorder({ right: `3px solid blue`, top: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `r` && rover.actualPosition === `E`) {
+    if (lastLetter === `r` && rover.actualPosition === `E`) {
       setRover({ ...rover, actualPosition: `S` });
       setBorder({ bottom: `3px solid blue`, right: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `r` && rover.actualPosition === `S`) {
+    if (lastLetter === `r` && rover.actualPosition === `S`) {
       setRover({ ...rover, actualPosition: `W` });
       setBorder({ left: `3px solid blue`, bottom: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `r` && rover.actualPosition === `W`) {
+    if (lastLetter === `r` && rover.actualPosition === `W`) {
       setRover({ ...rover, actualPosition: `N` });
       setBorder({ top: `3px solid blue`, left: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `l` && rover.actualPosition === `N`) {
+    if (lastLetter === `l` && rover.actualPosition === `N`) {
       setRover({ ...rover, actualPosition: `W` });
       setBorder({ left: `3px solid blue`, top: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `l` && rover.actualPosition === `W`) {
+    if (lastLetter === `l` && rover.actualPosition === `W`) {
       setRover({ ...rover, actualPosition: `S` });
       setBorder({ bottom: `3px solid blue`, left: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `l` && rover.actualPosition === `S`) {
+    if (lastLetter === `l` && rover.actualPosition === `S`) {
       setRover({ ...rover, actualPosition: `E` });
       setBorder({ right: `3px solid blue`, bottom: `` });
     }
 
-    if (rover.order[rover.order.length - 1] === `l` && rover.actualPosition === `E`) {
+    if (lastLetter === `l` && rover.actualPosition === `E`) {
       setRover({ ...rover, actualPosition: `N` });
       setBorder({ top: `3px solid blue`, right: `` });
     }
   }, [activeMovement]);
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitStart = (e) => {
     e.preventDefault();
 
     setLoading(false);
@@ -342,7 +313,7 @@ function App() {
           <h4> By Edu Vadillo</h4>
         </div>
         <div className='button-frontpage-container'>
-          <form onSubmit={handleSubmitForm}>
+          <form onSubmit={handleSubmitStart}>
             <button className='button-start-mission' type='submit'>
               Start the Mission!
             </button>
@@ -389,13 +360,13 @@ function App() {
           </div>
         </div>
         <div className='place-order-div'>
-          <button onClick={handleOrderLeft} className='button-start-mission' type='submit'>
+          <button onClick={handleOrderLeft} className='button-commands' type='submit'>
             Left
           </button>
-          <button onClick={handleOrderForward} className='button-start-mission' type='submit'>
+          <button onClick={handleOrderForward} className='button-commands' type='submit'>
             Forward
           </button>
-          <button onClick={handleOrderRight} className='button-start-mission' type='submit'>
+          <button onClick={handleOrderRight} className='button-commands' type='submit'>
             Right
           </button>
         </div>
