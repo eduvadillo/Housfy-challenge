@@ -1,0 +1,105 @@
+.App {
+  height: 103vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  background-image: url(./assets/images/espacio.jpg);
+  background-size: cover;
+}
+
+.frontpage-container {
+  background-image: url(./assets/images/marte.jfif);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title-frontpage {
+  font-size: 2rem;
+}
+
+.title-frontpage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-frontpage-container h2 {
+  font-size: 2rem;
+}
+
+.button-start-mission {
+  width: 14vw;
+  border-radius: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.inputOrder {
+  text-align: center;
+}
+
+.instructions {
+  text-align: center;
+  color: wheat;
+}
+
+.instructions h2 {
+  margin-bottom: 6vh;
+}
+
+.forward-key-div {
+  padding-bottom: 3vh;
+}
+
+.key {
+  height: 9vh;
+  padding-right: 2vw;
+}
+
+.key-container {
+  display: flex;
+  margin-bottom: 3vh;
+}
+
+.rover-div {
+  width: 20vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rover-purple {
+  height: 7vh;
+  width: 5vw;
+  background-color: purple;
+}
+
+.rover-green {
+  height: 7vh;
+  width: 5vw;
+  background-color: green;
+}
+
+.place-order-div {
+  margin-top: -12vh;
+  width: 56vw;
+  display: flex;
+  justify-content: center;
+}
+
+.rover-grey {
+  height: 7vh;
+  width: 5vw;
+  background-color: grey;
+}
+
+.mission-instructions-text {
+  margin-left: 1.5vw;
+}
