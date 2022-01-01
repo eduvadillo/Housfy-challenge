@@ -8,8 +8,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [positionXObstacle, setpositionXObstacle] = useState(``);
   const [positionYObstacle, setPositionYObstacle] = useState(``);
+  const [roverToGrey, setRoverToGrey] = useState(``);
+  const [roverToGreen, setRoverToGreen] = useState(``);
   const [boardBorderColor, setBoardBorderColor] = useState(`3px solid green`);
   const [activeMovement, setActiveMovement] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const [rover, setRover] = useState({
     order: ``,
     positionX: 11,
@@ -25,13 +28,42 @@ function App() {
     bottom: ``,
   });
 
+  const isMobile = width <= 450;
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
   useEffect(() => {
-    let positionXObstacle = Math.floor(Math.random() * (300 - 1)) + 100;
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
 
-    setpositionXObstacle(positionXObstacle);
+  console.log(`soy el witdth`, width, `y el roverToGreyX`, roverToGrey, `ìts mobile`, isMobile);
 
-    let positionYObstacle = Math.floor(Math.random() * (300 - 1)) + 100;
-    setPositionYObstacle(positionYObstacle);
+  useEffect(() => {
+    if (isMobile !== true) {
+      let positionXObstacle = Math.floor(Math.random() * (300 - 1)) + 100;
+
+      setpositionXObstacle(positionXObstacle);
+
+      let positionYObstacle = Math.floor(Math.random() * (300 - 1)) + 100;
+      setPositionYObstacle(positionYObstacle);
+      console.log(`more than 450`);
+      setRoverToGrey(389);
+      setRoverToGreen(110);
+    } else {
+      let positionXObstacle = Math.floor(Math.random() * (230 - 1)) + 50;
+
+      setpositionXObstacle(positionXObstacle);
+
+      let positionYObstacle = Math.floor(Math.random() * (230 - 1)) + 50;
+      setPositionYObstacle(positionYObstacle);
+      console.log(`less than 450`);
+      setRoverToGrey(289);
+      setRoverToGreen(60);
+    }
   }, []);
 
   let boardHeight = 500;
@@ -57,15 +89,15 @@ function App() {
     position: "absolute",
     width: `100px`,
     background:
-      rover.positionX > positionXObstacle - 110 &&
-      rover.positionX <= positionXObstacle + 110 &&
-      rover.positionY > positionYObstacle - 110 &&
-      rover.positionY < positionYObstacle + 110
+      rover.positionX > positionXObstacle - roverToGreen &&
+      rover.positionX <= positionXObstacle + roverToGreen &&
+      rover.positionY > positionYObstacle - roverToGreen &&
+      rover.positionY < positionYObstacle + roverToGreen
         ? `green`
         : rover.positionX < 11 ||
-          rover.positionX > 389 ||
+          rover.positionX > roverToGrey ||
           rover.positionY < 12 ||
-          rover.positionY > 389
+          rover.positionY > roverToGrey
         ? "grey"
         : "purple",
     height: `100px`,
@@ -153,10 +185,22 @@ function App() {
 
     if (
       lastLetter === `f` &&
+      eastPosition &&
+      rover.positionX - 46 > positionXObstacle &&
+      rover.positionX <= positionXObstacle + 59 &&
+      roverColorGreen &&
+      isMobile === true
+    ) {
+      setRover({ ...rover, positionX: rover.positionX + 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
       westPosition &&
       rover.positionX + 107 > positionXObstacle &&
       roverColorGreen
     ) {
+      console.log(`desde west con +20x`);
       setRover({ ...rover, positionX: rover.positionX + 20 });
     }
 
@@ -167,6 +211,29 @@ function App() {
       rover.positionX < positionXObstacle - 95 &&
       roverColorGreen
     ) {
+      console.log(`desde west  con -20x`);
+      setRover({ ...rover, positionX: rover.positionX - 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      westPosition &&
+      rover.positionX + 107 > positionXObstacle &&
+      roverColorGreen &&
+      isMobile === false
+    ) {
+      setRover({ ...rover, positionX: rover.positionX + 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      westPosition &&
+      rover.positionX + 59 >= positionXObstacle &&
+      rover.positionX < positionXObstacle - 46 &&
+      roverColorGreen &&
+      isMobile === true
+    ) {
+      console.log(`desde west mobile con -20x`);
       setRover({ ...rover, positionX: rover.positionX - 20 });
     }
 
@@ -191,11 +258,48 @@ function App() {
 
     if (
       lastLetter === `f` &&
+      northPosition &&
+      rover.positionY + 59 > positionYObstacle &&
+      rover.positionY < positionYObstacle - 50 &&
+      roverColorGreen &&
+      isMobile === true
+    ) {
+      console.log(`vaya en el rover north subiendo`);
+      setRover({ ...rover, positionY: rover.positionY - 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
       southPosition &&
       rover.positionY + 90 < positionYObstacle &&
-      roverColorGreen
+      roverColorGreen &&
+      isMobile === false
     ) {
+      console.log(`vaya en el rover south subiendo`);
       setRover({ ...rover, positionY: rover.positionY - 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      southPosition &&
+      rover.positionY + 45 < positionYObstacle &&
+      roverColorGreen &&
+      isMobile === true
+    ) {
+      console.log(`vaya en el rover south subiendo`);
+      setRover({ ...rover, positionY: rover.positionY - 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      southPosition &&
+      rover.positionY <= positionYObstacle + 57 &&
+      rover.positionY - 47 > positionYObstacle &&
+      roverColorGreen &&
+      isMobile === true
+    ) {
+      console.log(`vaya en el rover bajando`);
+      setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
     if (
@@ -203,8 +307,10 @@ function App() {
       southPosition &&
       rover.positionY < positionYObstacle + 110 &&
       rover.positionY - 100 > positionYObstacle &&
-      roverColorGreen
+      roverColorGreen &&
+      isMobile === false
     ) {
+      console.log(`vaya en el rover bajando`);
       setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
@@ -325,9 +431,9 @@ function App() {
     return (
       <>
         <div className='App'>
-          <div style={board}>
-            <div style={roverStyle}></div>
-            <div style={positionObstacle}></div>
+          <div style={board} className='board-div'>
+            <div style={roverStyle} className='rover-p'></div>
+            <div style={positionObstacle} className='rover-o'></div>
           </div>
           <div className='instructions'>
             <h2> INSTRUCTIONS:</h2>

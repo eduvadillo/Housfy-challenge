@@ -48,6 +48,11 @@
   font-size: 1.5rem;
 }
 
+.board-div {
+  height: 500px;
+  width: 500px;
+}
+
 .inputOrder {
   text-align: center;
 }
@@ -109,4 +114,57 @@
 
 .mission-instructions-text {
   margin-left: 1.5vw;
+}
+
+@media (max-width: 450px) {
+  .title-frontpage {
+    font-size: 1rem;
+  }
+  .title-frontpage-container h2 {
+    font-size: 1.5rem;
+  }
+  .instructions {
+    display: none;
+  }
+
+  .place-order-div {
+    margin-top: -32vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-commands {
+    width: 33vw;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+
+  .board-div {
+    height: 350px !important;
+    width: 350px !important;
+    margin-top: -27vh;
+  }
+
+  .frontpage-container {
+    justify-content: space-evenly;
+  }
+
+  .button-start-mission {
+    width: 40vw;
+  }
+
+  .App {
+    justify-content: center;
+  }
+
+  .rover-p {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .rover-o {
+    width: 50px !important;
+    height: 50px !important;
+  }
 }
