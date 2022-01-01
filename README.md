@@ -2,7 +2,7 @@
 
 <h2> Este challenge ha sido realizado con React </h2>
 
-<p> ¡Ultima actualización! Los técnicos de la nasa han trabajado duro y esta mañana han conseguido hacer el software responsive para mobile. Són conscientes de que les queda por pulir un pequeño detalle pero tienen que hacer un parón obligatorio, seguro que en breves es 100% responsive! </p>
+<p> ¡Ultima actualización! Los técnicos de la nasa han trabajado duro y esta mañana han conseguido hacer el software responsive para mobile </p>
 
 <p> La nasa se ha actualizado y gracias a los últimos descubrimientos es capaz de mandar en tiempo real las órdenes a su Rover para que se ejecuten automáticamente. Esto tiene muchas ventajas, ya que puedes hacer un seguimiento mucho más detallado y preciso en cada momento. Por ejemplo, el Rover te avisa cambiando de color cuando se acerca a una zona de peligro con la que puede colisionar, en este caso el obstáculo o los límites de nuestro tablero.  </p>
 

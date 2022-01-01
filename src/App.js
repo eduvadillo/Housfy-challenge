@@ -152,11 +152,43 @@ function App() {
       setRover({ ...rover, positionX: rover.positionX - 20 });
     }
 
-    if (lastLetter === `f` && westPosition && rover.positionX < 381 && roverColorGrey) {
+    if (
+      lastLetter === `f` &&
+      westPosition &&
+      rover.positionX < 381 &&
+      roverColorGrey &&
+      isMobile === false
+    ) {
       setRover({ ...rover, positionX: rover.positionX + 20 });
     }
 
-    if (lastLetter === `f` && northPosition && rover.positionY < 381 && roverColorGrey) {
+    if (
+      lastLetter === `f` &&
+      northPosition &&
+      rover.positionY < 381 &&
+      roverColorGrey &&
+      isMobile === false
+    ) {
+      setRover({ ...rover, positionY: rover.positionY + 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      westPosition &&
+      rover.positionX < 289 &&
+      roverColorGrey &&
+      isMobile === true
+    ) {
+      setRover({ ...rover, positionX: rover.positionX + 20 });
+    }
+
+    if (
+      lastLetter === `f` &&
+      northPosition &&
+      rover.positionY < 289 &&
+      roverColorGrey &&
+      isMobile === true
+    ) {
       setRover({ ...rover, positionY: rover.positionY + 20 });
     }
 
